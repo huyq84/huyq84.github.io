@@ -26,7 +26,7 @@
 <h2 align="center">🚀 Featured Projects</h2>
  
 
-| [![Satellite Tracker](https://github-readme-stats.vercel.app/api/pin/?username=YOUR_USERNAME&repo=satellite-tracker&theme=dark)(https://github.com/YOUR_USERNAME/satellite-tracker) | [![Neural Interface](https://github-readme-stats.vercel.app/api/pin/?username=YOUR_USERNAME&repo=neural-interface&theme=dark)(https://github.com/YOUR_USERNAME/neural-interface) |
+| [![Satellite Tracker](https://github-readme-stats.vercel.app/api/pin/?username=huyq84&repo=satellite-tracker&theme=dark)(https://github.com/huyq84/satellite-tracker) | [![Neural Interface](https://github-readme-stats.vercel.app/api/pin/?username=huyq84&repo=neural-interface&theme=dark)(https://github.com/huyq84/neural-interface) |
 |:---:|:---:|
  
 <!-- 实时活动轨迹 -->
