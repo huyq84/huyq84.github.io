@@ -12,8 +12,8 @@
  
 <!-- 数据仪表盘 -->
 <div align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=react&bg_color=0d1117&hide_border=true&include_all_commits=true&count_private=true"/>
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_USERNAME&layout=compact&theme=react&bg_color=0d1117&hide_border=true"/>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=huyq84&show_icons=true&theme=react&bg_color=0d1117&hide_border=true&include_all_commits=true&count_private=true"/>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=huyq84&layout=compact&theme=react&bg_color=0d1117&hide_border=true"/>
 </div>
  
 <!-- 3D技能矩阵 -->
@@ -33,7 +33,7 @@
 <h2 align="center">📈 Activity Graph</h2>
 <div align="center">
   <a href="https://github.com/ashutosh00710/github-profile-activity-graph">
-    <img alt="Activity Graph" src="https://github-profile-activity-graph.vercel.app/graph?username=YOUR_USERNAME&bg_color=0d1117&color=00ffff&line=00f7ff&point=00ffff&area=true&hide_border=true"/>
+    <img alt="Activity Graph" src="https://github-profile-activity-graph.vercel.app/graph?username=huyq84&bg_color=0d1117&color=00ffff&line=00f7ff&point=00ffff&area=true&hide_border=true"/>
   </a>
 </div>
  
@@ -43,10 +43,10 @@
   <a href="https://linkedin.com/in/YOUR_ID">
     <img src="https://img.shields.io/badge/-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/>
   </a>
-  <a href="mailto:YOUR_EMAIL">
+  <a href="mailto:411807438@qq.com">
     <img src="https://img.shields.io/badge/-Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white"/>
   </a>
-  <a href="https://YOUR_BLOG">
+  <a href="https://huyq84.gihub.io">
     <img src="https://img.shields.io/badge/-Blog-FF6C37?style=for-the-badge&logo=rss&logoColor=white"/>
   </a>
 </p>
