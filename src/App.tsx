@@ -53,7 +53,7 @@ const App: React.FC = () => {
     <div className="app">
       <header>
         <h1>huyq 的个人网站</h1>
-        <p>前端开发者 & 技术爱好者</p>
+        <p>开源技术爱好者ts</p>
       </header>
 
       <nav>
@@ -69,7 +69,7 @@ const App: React.FC = () => {
       <div className="container">
         <section id="about">
           <h2>关于我</h2>
-          <p>一名热爱前端开发的技术爱好者，专注于构建用户体验优秀的Web应用。</p>
+          <p>一名热爱开源的技术爱好者，专注于构建用户体验优秀的Web应用。</p>
         </section>
 
         <section id="portfolio">
