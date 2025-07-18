@@ -1,8 +1,8 @@
 import './App.css'
-import FlowChartPage from './pages/FlowChartPage'
+import HomePage from './pages/HomePage'
 
 function App() {
-  return <FlowChartPage />;
+  return <HomePage />;
 }
 
 export default App;
