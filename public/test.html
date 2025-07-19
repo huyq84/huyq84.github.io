@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .test-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        .success { color: green; }
+        .error { color: red; }
+        .info { color: blue; }
+    </style>
+</head>
+<body>
+    <h1>测试页面</h1>
+    
+    <div class="test-box">
+        <h2>基本功能测试</h2>
+        <p class="success">✅ HTML页面正常加载</p>
+        <p class="success">✅ CSS样式正常应用</p>
+        <p class="info">📱 设备信息: <span id="device-info"></span></p>
+        <p class="info">🌐 网络状态: <span id="network-status"></span></p>
+        <p class="info">📅 当前时间: <span id="current-time"></span></p>
+    </div>
+    
+    <div class="test-box">
+        <h2>JavaScript测试</h2>
+        <button onclick="testJavaScript()" style="padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            测试JavaScript
+        </button>
+        <div id="js-test-result"></div>
+    </div>
+    
+    <div class="test-box">
+        <h2>导航测试</h2>
+        <a href="index.html" style="color: #007bff; text-decoration: none;">返回主页</a>
+    </div>
+
+    <script>
+        // 显示设备信息
+        document.getElementById('device-info').textContent = navigator.userAgent;
+        document.getElementById('network-status').textContent = navigator.onLine ? '在线' : '离线';
+        document.getElementById('current-time').textContent = new Date().toLocaleString();
+        
+        // JavaScript测试
+        function testJavaScript() {
+            const result = document.getElementById('js-test-result');
+            result.innerHTML = '<p class="success">✅ JavaScript正常工作</p>';
+        }
+        
+        // 网络状态监听
+        window.addEventListener('online', () => {
+            document.getElementById('network-status').textContent = '在线';
+            document.getElementById('network-status').className = 'success';
+        });
+        
+        window.addEventListener('offline', () => {
+            document.getElementById('network-status').textContent = '离线';
+            document.getElementById('network-status').className = 'error';
+        });
+    </script>
+</body>
+</html>
