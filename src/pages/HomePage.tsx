@@ -57,7 +57,7 @@ export default function HomePage() {
         <div className="homepage-section">
           <h2>联系方式</h2>
           <ul className="homepage-contact">
-            <li>Email: <a href="mailto:huyq@example.com">huyq@example.com</a></li>
+            <li>Email: <a href="mailto:huyq@example.com">411807438@qq.com</a></li>
             <li>GitHub: <a href="https://github.com/huyq" target="_blank" rel="noopener noreferrer">github.com/huyq</a></li>
           </ul>
         </div>
