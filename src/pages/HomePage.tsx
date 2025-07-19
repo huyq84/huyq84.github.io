@@ -9,6 +9,8 @@ const skills = [
 ];
 
 export default function HomePage() {
+  console.log('HomePage组件开始渲染')
+  
   return (
     <div className="homepage-tech-bg">
       <div className="homepage-glass">
