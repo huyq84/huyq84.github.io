@@ -23,19 +23,19 @@ export default function HomePage() {
   }
   
   useEffect(() => {
-    addDebugInfo('HomePage组件已挂载', 'success')
+ //   addDebugInfo('HomePage组件已挂载', 'success')
     
     // 检查CSS样式是否加载
     const styles = document.querySelectorAll('style, link[rel="stylesheet"]')
-    addDebugInfo(`检测到 ${styles.length} 个样式元素`, 'info')
+//    addDebugInfo(`检测到 ${styles.length} 个样式元素`, 'info')
     
     // 检查组件渲染状态
     setTimeout(() => {
       const content = document.querySelector('.homepage-tech-bg')
       if (content) {
-        addDebugInfo('HomePage内容已渲染到DOM', 'success')
+ //       addDebugInfo('HomePage内容已渲染到DOM', 'success')
       } else {
-        addDebugInfo('HomePage内容未找到，可能存在渲染问题', 'error')
+//        addDebugInfo('HomePage内容未找到，可能存在渲染问题', 'error')
       }
     }, 100)
     
