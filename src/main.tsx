@@ -3,6 +3,12 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 
+// 导入vConsole
+import VConsole from 'vconsole'
+
+// 初始化vConsole
+new VConsole()
+
 // 添加调试信息到页面
 function addDebugInfo(message: string, type: 'info' | 'error' | 'success' = 'info') {
   const debugDiv = document.getElementById('debug-info') || (() => {
@@ -30,6 +36,9 @@ function addDebugInfo(message: string, type: 'info' | 'error' | 'success' = 'inf
   const color = type === 'error' ? '#ff6b6b' : type === 'success' ? '#51cf66' : '#74c0fc'
   const time = new Date().toLocaleTimeString()
   debugDiv.innerHTML += `<div style="color: ${color}">[${time}] ${message}</div>`
+  
+  // 同时输出到控制台
+  console.log(`[${time}] ${message}`)
 }
 
 // 检测网络状态
@@ -61,7 +70,26 @@ function checkResourceLoading() {
   })
 }
 
+// 检测页面加载状态
+function checkPageLoadStatus() {
+  addDebugInfo(`页面加载状态: ${document.readyState}`, 'info')
+  addDebugInfo(`DOM内容加载完成: ${document.readyState === 'interactive' || document.readyState === 'complete'}`, 'info')
+  
+  // 监听页面加载事件
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      addDebugInfo('DOM内容加载完成', 'success')
+    })
+  }
+  
+  window.addEventListener('load', () => {
+    addDebugInfo('页面完全加载完成', 'success')
+  })
+}
+
 // 添加调试信息
+addDebugInfo('=== vConsole调试工具已启动 ===', 'success')
+addDebugInfo('点击右下角vConsole图标查看详细日志', 'info')
 addDebugInfo('React应用开始加载...', 'info')
 addDebugInfo(`页面URL: ${window.location.href}`, 'info')
 addDebugInfo(`用户代理: ${navigator.userAgent}`, 'info')
@@ -71,6 +99,9 @@ checkNetworkStatus()
 
 // 检查资源加载
 checkResourceLoading()
+
+// 检查页面加载状态
+checkPageLoadStatus()
 
 try {
   const rootElement = document.getElementById('root')
@@ -99,6 +130,7 @@ try {
       <h1 style="color: #dc3545;">应用加载失败</h1>
       <p><strong>错误信息:</strong> ${errorMessage}</p>
       <p>请检查网络连接或刷新页面重试。</p>
+      <p><strong>调试提示:</strong> 点击右下角vConsole图标查看详细错误信息</p>
       <button onclick="location.reload()" style="padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">刷新页面</button>
     </div>
   `

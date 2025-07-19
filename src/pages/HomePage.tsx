@@ -1,4 +1,4 @@
-// React import removed as it's not needed in modern React
+import { useEffect } from 'react'
 
 const skills = [
   '前端开发 (React, TypeScript, Vite)',
@@ -17,7 +17,29 @@ export default function HomePage() {
       const time = new Date().toLocaleTimeString()
       debugDiv.innerHTML += `<div style="color: ${color}">[${time}] ${message}</div>`
     }
+    // 同时输出到控制台
+    const time = new Date().toLocaleTimeString()
+    console.log(`[${time}] ${message}`)
   }
+  
+  useEffect(() => {
+    addDebugInfo('HomePage组件已挂载', 'success')
+    
+    // 检查CSS样式是否加载
+    const styles = document.querySelectorAll('style, link[rel="stylesheet"]')
+    addDebugInfo(`检测到 ${styles.length} 个样式元素`, 'info')
+    
+    // 检查组件渲染状态
+    setTimeout(() => {
+      const content = document.querySelector('.homepage-tech-bg')
+      if (content) {
+        addDebugInfo('HomePage内容已渲染到DOM', 'success')
+      } else {
+        addDebugInfo('HomePage内容未找到，可能存在渲染问题', 'error')
+      }
+    }, 100)
+    
+  }, [])
   
   addDebugInfo('HomePage组件开始渲染', 'info')
   
