@@ -41,7 +41,7 @@ export default function HomePage() {
     
   }, [])
   
-  addDebugInfo('HomePage组件开始渲染', 'info')
+//  addDebugInfo('HomePage组件开始渲染', 'info')
   
   return (
     <div className="homepage-tech-bg">
@@ -57,8 +57,8 @@ export default function HomePage() {
         <div className="homepage-section">
           <h2>联系方式</h2>
           <ul className="homepage-contact">
-            <li>Email: <a href="mailto:huyq@example.com">huyq@example.com</a></li>
-            <li>GitHub: <a href="https://github.com/huyq" target="_blank" rel="noopener noreferrer">github.com/huyq</a></li>
+            <li>Email: <a href="mailto:411807438@qq.com">411807435@qq.com</a></li>
+            <li>GitHub: <a href="https://huyq84.github.io" target="_blank" rel="noopener noreferrer">github.com/huyq</a></li>
           </ul>
         </div>
       </div>
