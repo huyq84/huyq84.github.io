@@ -3,12 +3,6 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 
-// 导入vConsole
-import VConsole from 'vconsole'
-
-// 初始化vConsole
-new VConsole()
-
 // 添加调试信息到页面
 function addDebugInfo(message: string, type: 'info' | 'error' | 'success' = 'info') {
   const debugDiv = document.getElementById('debug-info') || (() => {
@@ -19,15 +13,16 @@ function addDebugInfo(message: string, type: 'info' | 'error' | 'success' = 'inf
       top: 10px;
       left: 10px;
       right: 10px;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.9);
       color: white;
-      padding: 10px;
-      border-radius: 5px;
+      padding: 15px;
+      border-radius: 8px;
       font-family: monospace;
-      font-size: 12px;
+      font-size: 14px;
       z-index: 9999;
-      max-height: 200px;
+      max-height: 300px;
       overflow-y: auto;
+      border: 2px solid #333;
     `
     document.body.appendChild(div)
     return div
@@ -35,7 +30,8 @@ function addDebugInfo(message: string, type: 'info' | 'error' | 'success' = 'inf
   
   const color = type === 'error' ? '#ff6b6b' : type === 'success' ? '#51cf66' : '#74c0fc'
   const time = new Date().toLocaleTimeString()
-  debugDiv.innerHTML += `<div style="color: ${color}">[${time}] ${message}</div>`
+  const logEntry = `<div style="color: ${color}; margin: 5px 0; padding: 5px; border-left: 3px solid ${color}; padding-left: 10px;">[${time}] ${message}</div>`
+  debugDiv.innerHTML += logEntry
   
   // 同时输出到控制台
   console.log(`[${time}] ${message}`)
@@ -87,12 +83,36 @@ function checkPageLoadStatus() {
   })
 }
 
+// 检测浏览器兼容性
+function checkBrowserCompatibility() {
+  addDebugInfo(`浏览器: ${navigator.userAgent}`, 'info')
+  addDebugInfo(`屏幕尺寸: ${window.screen.width}x${window.screen.height}`, 'info')
+  addDebugInfo(`视口尺寸: ${window.innerWidth}x${window.innerHeight}`, 'info')
+  addDebugInfo(`设备像素比: ${window.devicePixelRatio}`, 'info')
+  
+  // 检查ES6支持
+  try {
+    eval('const test = () => {}')
+    addDebugInfo('ES6箭头函数支持: 是', 'success')
+  } catch (e) {
+    addDebugInfo('ES6箭头函数支持: 否', 'error')
+  }
+  
+  // 检查fetch支持
+  if (typeof fetch !== 'undefined') {
+    addDebugInfo('Fetch API支持: 是', 'success')
+  } else {
+    addDebugInfo('Fetch API支持: 否', 'error')
+  }
+}
+
 // 添加调试信息
-addDebugInfo('=== vConsole调试工具已启动 ===', 'success')
-addDebugInfo('点击右下角vConsole图标查看详细日志', 'info')
+addDebugInfo('=== 移动端调试模式已启动 ===', 'success')
 addDebugInfo('React应用开始加载...', 'info')
 addDebugInfo(`页面URL: ${window.location.href}`, 'info')
-addDebugInfo(`用户代理: ${navigator.userAgent}`, 'info')
+
+// 检查浏览器兼容性
+checkBrowserCompatibility()
 
 // 检查网络状态
 checkNetworkStatus()
@@ -130,7 +150,7 @@ try {
       <h1 style="color: #dc3545;">应用加载失败</h1>
       <p><strong>错误信息:</strong> ${errorMessage}</p>
       <p>请检查网络连接或刷新页面重试。</p>
-      <p><strong>调试提示:</strong> 点击右下角vConsole图标查看详细错误信息</p>
+      <p><strong>调试提示:</strong> 查看页面左上角的调试信息</p>
       <button onclick="location.reload()" style="padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">刷新页面</button>
     </div>
   `
