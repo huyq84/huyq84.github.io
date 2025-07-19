@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动端调试测试</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+        
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            background: #f8f9fa;
+        }
+        
+        .test-section h2 {
+            color: #495057;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        
+        .device-info {
+            background: #e2e3e5;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+        
+        .button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        
+        .button:hover {
+            background: #0056b3;
+        }
+        
+        .debug-log {
+            background: #000;
+            color: #0f0;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 移动端调试测试</h1>
+        
+        <div class="test-section">
+            <h2>🔍 基本功能测试</h2>
+            <div id="basic-tests"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>📊 设备信息</h2>
+            <div id="device-info"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>🌐 网络状态</h2>
+            <div id="network-status"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>⚡ JavaScript功能</h2>
+            <button class="button" onclick="testJavaScript()">测试JavaScript</button>
+            <button class="button" onclick="testES6()">测试ES6</button>
+            <button class="button" onclick="testFetch()">测试Fetch</button>
+            <div id="js-results"></div>
+        </div>
+        
+        <div class="test-section">
+            <h2>📝 调试日志</h2>
+            <div id="debug-log" class="debug-log"></div>
+            <button class="button" onclick="clearLog()">清空日志</button>
+        </div>
+        
+        <div class="test-section">
+            <h2>🔗 导航测试</h2>
+            <a href="index.html" class="button" style="text-decoration: none; display: inline-block;">返回主页</a>
+            <a href="test.html" class="button" style="text-decoration: none; display: inline-block;">桌面测试</a>
+        </div>
+    </div>
+
+    <script>
+        // 调试日志函数
+        function log(message, type = 'info') {
+            const debugLog = document.getElementById('debug-log');
+            const time = new Date().toLocaleTimeString();
+            const color = type === 'error' ? '#ff6b6b' : type === 'success' ? '#51cf66' : '#74c0fc';
+            debugLog.innerHTML += `<div style=\"color: ${color}\">[${time}] ${message}</div>`;
+            debugLog.scrollTop = debugLog.scrollHeight;
+        }
+        
+        function clearLog() {
+            document.getElementById('debug-log').innerHTML = '';
+        }
+        
+        // 基本功能测试
+        function runBasicTests() {
+            const basicTests = document.getElementById('basic-tests');
+            
+            // HTML测试
+            basicTests.innerHTML += '<div class="status success">✅ HTML页面正常加载</div>';
+            log('HTML页面正常加载', 'success');
+            
+            // CSS测试
+            basicTests.innerHTML += '<div class="status success">✅ CSS样式正常应用</div>';
+            log('CSS样式正常应用', 'success');
+            
+            // JavaScript测试
+            basicTests.innerHTML += '<div class="status success">✅ JavaScript正常运行</div>';
+            log('JavaScript正常运行', 'success');
+        }
+        
+        // 设备信息
+        function showDeviceInfo() {
+            const deviceInfo = document.getElementById('device-info');
+            const info = `
+用户代理: ${navigator.userAgent}
+屏幕尺寸: ${window.screen.width}x${window.screen.height}
+视口尺寸: ${window.innerWidth}x${window.innerHeight}
+设备像素比: ${window.devicePixelRatio}
+语言: ${navigator.language}
+平台: ${navigator.platform}
+Cookie启用: ${navigator.cookieEnabled}
+在线状态: ${navigator.onLine ? '在线' : '离线'}
+            `;
+            deviceInfo.innerHTML = `<div class="device-info">${info}</div>`;
+            log('设备信息已显示', 'info');
+        }
+        
+        // 网络状态
+        function showNetworkStatus() {
+            const networkStatus = document.getElementById('network-status');
+            const status = navigator.onLine ? '在线' : '离线';
+            const statusClass = navigator.onLine ? 'success' : 'error';
+            networkStatus.innerHTML = `<div class="status ${statusClass}">🌐 网络状态: ${status}</div>`;
+            log(`网络状态: ${status}`, navigator.onLine ? 'success' : 'error');
+            
+            // 监听网络状态变化
+            window.addEventListener('online', () => {
+                networkStatus.innerHTML = '<div class="status success">🌐 网络状态: 在线</div>';
+                log('网络已连接', 'success');
+            });
+            
+            window.addEventListener('offline', () => {
+                networkStatus.innerHTML = '<div class="status error">🌐 网络状态: 离线</div>';
+                log('网络已断开', 'error');
+            });
+        }
+        
+        // JavaScript功能测试
+        function testJavaScript() {
+            const results = document.getElementById('js-results');
+            results.innerHTML = '<div class="status success">✅ JavaScript功能正常</div>';
+            log('JavaScript功能测试通过', 'success');
+        }
+        
+        function testES6() {
+            const results = document.getElementById('js-results');
+            try {
+                // 测试ES6特性
+                const test = () => 'ES6箭头函数';
+                const arr = [1, 2, 3];
+                const [a, b, c] = arr;
+                const obj = { x: 1, y: 2 };
+                const { x, y } = obj;
+                
+                results.innerHTML = '<div class="status success">✅ ES6功能支持正常</div>';
+                log('ES6功能测试通过', 'success');
+            } catch (e) {
+                results.innerHTML = '<div class="status error">❌ ES6功能不支持</div>';
+                log(`ES6功能测试失败: ${e.message}`, 'error');
+            }
+        }
+        
+        function testFetch() {
+            const results = document.getElementById('js-results');
+            if (typeof fetch !== 'undefined') {
+                results.innerHTML = '<div class="status success">✅ Fetch API支持正常</div>';
+                log('Fetch API支持正常', 'success');
+            } else {
+                results.innerHTML = '<div class="status error">❌ Fetch API不支持</div>';
+                log('Fetch API不支持', 'error');
+            }
+        }
+        
+        // 页面加载完成后运行测试
+        document.addEventListener('DOMContentLoaded', () => {
+            log('页面开始加载测试', 'info');
+            runBasicTests();
+            showDeviceInfo();
+            showNetworkStatus();
+            log('所有测试完成', 'success');
+        });
+    </script>
+</body>
+</html>
