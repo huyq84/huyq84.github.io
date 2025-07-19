@@ -1,4 +1,4 @@
-import React from 'react';
+// React import removed as it's not needed in modern React
 
 const skills = [
   '前端开发 (React, TypeScript, Vite)',

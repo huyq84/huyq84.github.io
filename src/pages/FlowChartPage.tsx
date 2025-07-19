@@ -177,7 +177,7 @@ const FlowChartPage: React.FC = () => {
   const [form] = Form.useForm();
 
   // 处理节点 hover 事件
-  const onNodeMouseEnter = useCallback<NodeMouseHandler>((event, node) => {
+  const onNodeMouseEnter = useCallback<NodeMouseHandler>((_event, node) => {
     setHoverNodeId(node.id);
   }, []);
   const onNodeMouseLeave = useCallback(() => {
@@ -185,7 +185,7 @@ const FlowChartPage: React.FC = () => {
   }, []);
 
   // 处理节点点击事件
-  const onNodeClick = useCallback<NodeMouseHandler>((event, node) => {
+  const onNodeClick = useCallback<NodeMouseHandler>((_event, node) => {
     if (NO_FORM_NODE_IDS.includes(node.id)) return;
     setActiveNodeId(node.id);
     form.resetFields();
