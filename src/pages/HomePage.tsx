@@ -9,7 +9,17 @@ const skills = [
 ];
 
 export default function HomePage() {
-  console.log('HomePage组件开始渲染')
+  // 添加调试信息到页面
+  const addDebugInfo = (message: string, type: 'info' | 'error' | 'success' = 'info') => {
+    const debugDiv = document.getElementById('debug-info')
+    if (debugDiv) {
+      const color = type === 'error' ? '#ff6b6b' : type === 'success' ? '#51cf66' : '#74c0fc'
+      const time = new Date().toLocaleTimeString()
+      debugDiv.innerHTML += `<div style="color: ${color}">[${time}] ${message}</div>`
+    }
+  }
+  
+  addDebugInfo('HomePage组件开始渲染', 'info')
   
   return (
     <div className="homepage-tech-bg">
