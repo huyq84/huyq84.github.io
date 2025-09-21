@@ -47,7 +47,7 @@ export default function HomePage() {
     <div className="homepage-tech-bg">
       <div className="homepage-glass">
         <h1 className="homepage-title">Hi, I am <span className="homepage-highlight">huyq</span></h1>
-        <p className="homepage-desc">热爱科技，专注于前端与AI创新，追求极致体验与高效开发。</p>
+        <p className="homepage-desc">--热爱科技，专注于前端与AI创新，追求极致体验与高效开发。--</p>
         <div className="homepage-section">
           <h2>技能栈</h2>
           <ul className="homepage-skills">
